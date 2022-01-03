@@ -12,7 +12,7 @@ function App() {
   
   let fetchTask = async() => {
     try {
-      let listData = await axios.get("https://node1-todo.herokuapp.com//list-all-todo");
+      let listData = await axios.get("https://node1-todo.herokuapp.com/list-all-todo");
       setList([...listData.data])
     } catch (error) {
       console.log(error);
@@ -21,7 +21,7 @@ function App() {
 
   let handleCreate = async() => {
     try {
-      let postData = await axios.post("https://node1-todo.herokuapp.com//create-task",{message:task});
+      let postData = await axios.post("https://node1-todo.herokuapp.com/create-task",{message:task});
       fetchTask();
       setTask("");
       //alert(postData.data.message);
@@ -32,7 +32,7 @@ function App() {
 
 let handleChange = async(e,id) => {
   try {
-    let updateData = await axios.put(`https://node1-todo.herokuapp.com//update-task/${id}`,{status:e.target.checked});
+    let updateData = await axios.put(`https://node1-todo.herokuapp.com/update-task/${id}`,{status:e.target.checked});
     fetchTask();
   } catch (error) {
     console.log(error);
@@ -41,7 +41,7 @@ let handleChange = async(e,id) => {
 
 let handleDelete = async(id) => {
   try {
-    await axios.delete(`https://node1-todo.herokuapp.com//delete-task/${id}`);
+    await axios.delete(`https://node1-todo.herokuapp.com/delete-task/${id}`);
     fetchTask();
   } catch (error) {
     alert(error);
